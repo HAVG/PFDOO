@@ -14,12 +14,12 @@ public class AccountController extends HttpServlet {
         Logger logger=Logger.getInstance("logs.txt","error.jsp");
         String username=request.getParameter("user");
         String password=request.getParameter("pass");
-        String action=request.getParameter("Action");
         DAONexus dN=new DAONexus();
-        if(null!=action)switch(action){
-            case "login":
-                
-                break;
+        if("alumno".equals((String)request.getParameter("origin"))||
+            "maestro".equals((String)request.getParameter("origin"))||
+            "administrador".equals((String)request.getParameter("origin"))){
+            String action=request.getParameter("Action");
+            if(null!=action)switch(action){
             //case "logOut":
                 //break;
             //case "createTeacher":
@@ -31,7 +31,8 @@ public class AccountController extends HttpServlet {
             //case "createSubject":
             //default:
                 //break;
-        }else
+        }else{}
+        }
             response.sendRedirect("login.jsp");
         String materia="Matematicas";
         String fecha="/01/02/2017";
