@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%
+    if(session.getAttribute("userType")==null||(String)session.getAttribute("userType")!="alumno"){
+        response.sendRedirect("index.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -8,11 +12,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="extraSources/css/bootstrap.min.css">
         <link rel="stylesheet" href="extraSources/css/mainStyles.css">
+        <%--
+            REFERENCE 1 -- Se han de declarar aqui primero las variables del reference 1.
+        --%>
         <%
-            <%--
-                REFERENCE 1 -- Se han de declarar aqui primero las variables
-                del reference 1.
-            --%>
             String materia1 = (String)session.getAttribute("materia");
             String fecha1 = (String)session.getAttribute("fecha");
         %>

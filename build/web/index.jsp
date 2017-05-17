@@ -1,5 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+    <%
+        if(session.getAttribute("userType")!=null)
+            switch((String)session.getAttribute("userType")){
+                case "alumno":
+                    response.sendRedirect("alumno.jsp");
+                    break;
+                case "docente":
+                    response.sendRedirect("maestro.jsp");
+                    break;
+                case "administrativo":
+                    response.sendRedirect("administracion.jsp");
+                    break;
+                default:
+                    break;
+            }
+        
+    %>
     <head>
         <title>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
