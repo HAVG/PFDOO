@@ -20,8 +20,8 @@ public class AccountController extends HttpServlet {
             "administrador".equals((String)request.getParameter("origin"))){
             String action=request.getParameter("Action");
             if(null!=action)switch(action){
-            //case "logOut":
-                //break;
+                case "logOut":
+                    break;
             //case "createTeacher":
                 //break;
             //case "createGroup":
