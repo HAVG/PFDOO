@@ -1,9 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%
-    if(session.getAttribute("userType")==null||(String)session.getAttribute("userType")!="docente"){
-        response.sendRedirect("index.jsp");
-    }
+<%if(session.getAttribute("userType")==null||(String)session.getAttribute("userType")!="docente")
+    response.sendRedirect("index.jsp");
 %>
 <html>
     <head>

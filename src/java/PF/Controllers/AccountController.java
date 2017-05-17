@@ -11,9 +11,9 @@ public class AccountController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String iD=request.getParameter("ID");
-        String pass=request.getParameter("Password");
-        String userType=request.getParameter("UserType");
+        Logger logger=Logger.getInstance("logs.txt","error.jsp");
+        String username=request.getParameter("user");
+        String password=request.getParameter("pass");
         String action=request.getParameter("Action");
         DAONexus dN=new DAONexus();
         if(null!=action)switch(action){
@@ -33,9 +33,6 @@ public class AccountController extends HttpServlet {
                 //break;
         }else
             response.sendRedirect("login.jsp");
-        Logger logger=Logger.getInstance("logs.txt","error.jsp");
-        String username=request.getParameter("user");
-        String password=request.getParameter("pass");
         String materia="Matematicas";
         String fecha="/01/02/2017";
         boolean seExpiro=true;
