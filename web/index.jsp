@@ -2,46 +2,81 @@
 <html>
     <head>
         <title>Login</title>
-        <link rel="stylesheet" href="extraSources/bootstrap.min.css">
-        <link rel="stylesheet" href="extraSources/mainStyles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="extraSources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="extraSources/css/mainStyles.css">
         <style>
             .container{
                 padding-left: 18%;
                 padding-right: 18%;
             }
+            .jumbotron-padder{
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            .jumbotron{
+                background-color: #b0b0b0;
+                color: #505050;
+                text-align: center;
+            }
         </style>
     </head>
-    <body style="font-size: large">
+    <body style="font-size: large; font-family: Serif;">
         <header>
             <div class="container" style="padding-top: 50px">
-                <h1 style="text-align: center" class="col-xs-12">Inicio de Sesión</h1>
-                <h1 style="text-align: center"><small class="col-xs-12">Introduzca sus datos</small></h1>
+                <h1 style="text-align: center" class="col-xs-12">Inicio de Sesión
+                    <small class="col-xs-12">Introduzca sus datos</small>
+                </h1>
             </div>
         </header>
         <section>
             <div class="container" style="padding-top: 50px">
-                <form action="AccountController" method="post">
+                <form action="mainController" method="post">
                     <div class="form-group">
                         <div class="col-sm-12 col-lg-3">
-                            <label for="user">Usuario: </label>
+                            <label for="username">Usuario: </label>
                         </div>
                         <div class="col-sm-12 col-lg-9">
-                            <input type="email" id="user" class="form-control">
-                            <br><br>
+                            <input type="text" id="username" name="user" class="form-control">
+                            <br>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12 col-lg-3 col">
-                            <label for="pass">Contraseña: </label>
+                            <label for="password">Contraseña: </label>
                         </div>
                         <div class="col-sm-12 col-lg-9">
-                            <input type="password" class="form-control" id="pass">
+                            <input type="password" id="password" class="form-control" name="pass">
+                            <br><br>
                         </div>
                     </div>
+                    <div class="col-xs-12">
+                        <button class="btn btn-info btn-block" type="submit">
+                            Iniciar Sesion
+                        </button>
+                    </div>
+                    <%--
+                        REFERENCE 2 -- Con estas lineas de abajo intento delcarar decir, que si
+                        las credencialess son incorrectas entonces se inyectara ese codigo
+                    --%>
+                    <%
+                        if(Boolean.parseBoolean((String)session.getAttribute("loginError")))
+                            
+                        {
+                            out.println("<div class=\"col-xs-12\">\n" +
+                                    "                        <br><br><br><br>\n" +
+                                    "                        <div class=\"jumbotron jumbotron-padder\">\n" +
+                                    "                            Usuario o contraseña incorrectos.\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>");
+                        }
+                    %>
                 </form>
             </div>
         </section>
     </body>
-    <script rel="script" src="extraSources/jquery-3.2.1.min.js"></script>
-    <script rel="script" src="extraSources/bootstrap.min.js"></script>
+    <script rel="script" src="extraSources/js/jquery-3.2.1.min.js"></script>
+    <script rel="script" src="extraSources/js/bootstrap.min.js"></script>
 </html>

@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String userType;
+    String userType=null;
     if(session.getAttribute("userType")==null)
         response.sendRedirect("index.jsp");
     else

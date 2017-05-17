@@ -1,17 +1,10 @@
-<%-- 
-    Document   : error
-    Created on : may 3, 2017, 10:09:55 a.m.
-    Author     : hecto
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+<head>
+    <title>Error</title>
+    <link rel="stylesheet" href="extraSources/bootstrap/mainStyles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+</body>
 </html>
