@@ -12,9 +12,37 @@ public class AccountController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         Logger logger=Logger.getInstance("logs.txt","error.jsp");
-        String username=request.getParameter("user");
-        String password=request.getParameter("pass");
+        String origin=request.getParameter("origin");
         DAONexus dN=new DAONexus();
+        if("login".equals(origin)){
+            String username=request.getParameter("user");
+            String password=request.getParameter("pass");
+            if(username.equals("hola")&&password.equals("mundo")){
+                HttpSession session=request.getSession();
+                logger.commitEvent("Se ha iniciado sesion",null,request,response);
+                /**
+                 * REFERENCE 1 -- Tomese como ejemplo las siguientes 3 lineas, las cuales
+                 * serviran para declarar las variables que iran dentro de las celdas del
+                 * dashboard del alumno.jsp
+                 */
+                session.setAttribute("materia","Matematicas");
+                session.setAttribute("fecha","01/02/2017");
+                session.setAttribute("seExpiro","true");
+                request.getRequestDispatcher("alumno.jsp").forward(request,response);
+            }else{
+                /**
+                 * REFERENCE 2 -- Si no se autentica correctamente, entonces se ha de crear una variable llamada
+                 *  loginError, se le asignara el valor de true, y entonces se reenviara la variable
+                 *  al index.jsp
+                 */
+                HttpSession session=request.getSession();
+                session.setAttribute("loginError","true");
+                request.getRequestDispatcher("index.jsp").forward(request,response);
+                logger.commitEvent("Se han ingresado las credenciales erroneas:" +
+                    username+" "+password);
+                session.invalidate();
+            }
+        }
         if("alumno".equals((String)request.getParameter("origin"))||
             "maestro".equals((String)request.getParameter("origin"))||
             "administrador".equals((String)request.getParameter("origin"))){
@@ -37,32 +65,7 @@ public class AccountController extends HttpServlet {
         String materia="Matematicas";
         String fecha="/01/02/2017";
         boolean seExpiro=true;
-        if(username.equals("hola")&&password.equals("mundo")){
-            HttpSession session=request.getSession();
-            logger.commitEvent("Se ha iniciado sesion",null,request,response);
-            /**
-             * REFERENCE 1 -- Tomese como ejemplo las siguientes 3 lineas, las cuales
-             * serviran para declarar las variables que iran dentro de las celdas del
-             * dashboard del alumno.jsp
-             */
-            session.setAttribute("materia","Matematicas");
-            session.setAttribute("fecha","01/02/2017");
-            session.setAttribute("seExpiro","true");
-            request.getRequestDispatcher("alumno.jsp").forward(request,response);
-        }
-        else{
-            /**
-             * REFERENCE 2 -- Si no se autentica correctamente, entonces se ha de crear una variable llamada
-             *  loginError, se le asignara el valor de true, y entonces se reenviara la variable
-             *  al index.jsp
-             */
-            HttpSession session=request.getSession();
-            session.setAttribute("loginError","true");
-            request.getRequestDispatcher("index.jsp").forward(request,response);
-            logger.commitEvent("Se han ingresado las credenciales erroneas:" +
-                             username+" "+password);
-            session.invalidate();
-        }
+        
     }
     protected void doGet(HttpServletRequest request,HttpServletResponse response)
         throws ServletException,IOException{

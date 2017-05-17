@@ -74,6 +74,7 @@
                             Iniciar Sesion
                         </button>
                     </div>
+                    <input type="hidden" name="origin" value="login">
                     <%--
                         REFERENCE 2 -- Con estas lineas de abajo intento delcarar decir, que si
                         las credencialess son incorrectas entonces se inyectara ese codigo

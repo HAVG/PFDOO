@@ -3,12 +3,20 @@
 <%if(session.getAttribute("userType")==null||(String)session.getAttribute("userType")!="docente")
     response.sendRedirect("index.jsp");
 %>
-<html>
+<html lang="es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Dashboard</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="extraSources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="extraSources/css/mainStyles.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="AccountController">
+            <select name="asignatura">
+                <option value=""></option>
+            </select>
+            <input type="hidden" name="origin" value="maestro">
+        </form>
     </body>
 </html>
