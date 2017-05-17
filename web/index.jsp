@@ -79,9 +79,7 @@
                         las credencialess son incorrectas entonces se inyectara ese codigo
                     --%>
                     <%
-                        if(Boolean.parseBoolean((String)session.getAttribute("loginError")))
-                            
-                        {
+                        if(session.getAttribute("loginError")!=null){
                             out.println("<div class=\"col-xs-12\">\n" +
                                     "                        <br><br><br><br>\n" +
                                     "                        <div class=\"jumbotron jumbotron-padder\">\n" +
